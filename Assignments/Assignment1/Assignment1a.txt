@@ -8,8 +8,10 @@ void main() {
   dynamic iAmDynamic = 26;
   var iAmVar = 10;
   dynamic test = 1234;
+  int j = 0;
+  int k = 0;
 
-   // add your new code here.
+  // add your new code here.
 //     myConst = "changed const";
   iAmFinal = "My Final Offer";
 //   iAmFinal = "I changed my mind!";
@@ -17,31 +19,74 @@ void main() {
   print(iAmVar);
 //   iAmVar = "I am String now";
 //   print(iAmVar);
-  
+
   iAmDynamic = 12345;
   print(iAmDynamic);
   iAmDynamic = "I am String now";
   print(iAmDynamic);
-  
+
   print("some text " + myFloat.toString());
   print("some text $myNumber");
   print("some text ${myBoolean.toString()}");
-  
+
   //Exercise
   //1
   print("$myString ${myFloat.toString()}");
+
   //2
   print("${myString.toUpperCase()}");
+
   //3
   print("myFloat rounded down: ${myFloat.floor()}");
   print("myfloat rounded up: ${myFloat.round()}");
+
   //4
-  print("Time since 1970 in seconds: ${DateTime.now().difference(DateTime.utc(1970, 1, 1)).inSeconds}");
+  print(
+      "Time since 1970 in seconds: ${DateTime.now().difference(DateTime.utc(1970, 1, 1)).inSeconds}");
+
   //5
   int val = -999;
   print("Absolute Value: ${val.abs()}");
+
   //6
   print("Before reassignment: $test");
   test = "Hello there!";
   print("After reassignment: $test");
+
+  //7
+  print("For Loop: ");
+  for (int i = 0; i < 21; i++) 
+  {
+    print(i);
+  }
+
+  //8
+  print("While Loop: ");
+  while (j < 21) 
+  {
+    print(j);
+    j++;
+  }
+
+  //9
+  print("For Loop: ");
+  for (int i = 0; i < 21; i++) 
+  {
+    print(i);
+    if (i == 10) 
+    {
+      break;
+    }
+  }
+
+  print("While Loop: ");
+  while (k < 21) 
+  {
+    print(k);
+    if (k == 10) 
+    {
+      break;
+    }
+    k++;
+  }
 }
