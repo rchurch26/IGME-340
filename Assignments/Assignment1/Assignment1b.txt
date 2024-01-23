@@ -1,0 +1,40 @@
+void main() {
+  //1
+  var myList1 = List.filled(5, 0, growable: false);
+  myList1[2] = 1;
+  print(myList1);
+  
+  //2
+  var myList2 = ['word', 2, 2.3, true];
+  print(myList2);
+  
+  //3
+  myList2.insert(2, 'IGME');
+  print(myList2);
+  
+  //4
+  var myList3 = ['item1', 'item2', 'item3'];
+  myList2.addAll(myList3);
+  print(myList2);
+  
+  //5
+  var myList4 = [123.4, 'item 6', false];
+  myList2.insertAll(0, myList4);
+  print(myList2);
+  
+  //6
+  var myList5 = ['Bird', 'Is', 'The', 'Word'];
+  print(myList5);
+  
+  //7
+  myList5.removeAt(3);
+  print(myList5);
+  
+  //8
+  myList5.removeLast();
+  print(myList5);
+  
+  //9
+  myList2.removeRange(2, 6);
+  print(myList2);
+}
