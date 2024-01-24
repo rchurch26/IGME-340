@@ -23,7 +23,7 @@ void main() {
   print(myList2);
   
   //6
-  var myList5 = ['Bird', 'Is', 'The', 'Word'];
+  List<String> myList5 = ['Bird', 'Is', 'The', 'Word'];
   print(myList5);
   
   //7
