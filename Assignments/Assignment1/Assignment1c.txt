@@ -20,6 +20,7 @@ Map <String, dynamic> player03 = {
 };
 
 void main() {
+  //1
   print (player01);
   print ("${player01.runtimeType}");
   print (player02);
@@ -27,15 +28,16 @@ void main() {
   print (player03);
   print ("${player03.runtimeType}");
   
+  //2
   var player04 = Map();
   player04['name'] = 'Gordon Freeman';
   player04['sex'] = 'M';
   player04['class'] = 'Scientist';
   player04['hp']= 6000;
-
   print ("player04: $player04");
   print ("player04: ${player04.runtimeType}");
   
+  //3
   Map player05 = {
     'name': 'Swift',
     'sex': 'F',
@@ -44,4 +46,40 @@ void main() {
   };
   print("player05: $player05");
   print("player05: ${player05.runtimeType}");
+  
+  //4
+  player05['armor'] = 250;
+  player05.remove('hp');
+  print("player05: $player05");
+  
+  //5
+  Map moreStuff = Map();
+  moreStuff['mp'] = 2;
+  moreStuff['money'] = 10000;
+  moreStuff['xp'] = 15000;
+  moreStuff['level'] = 100;
+  //player01.addAll({moreStuff});
+  
+  //6
+  print("player05 keys: ${player05.keys}");
+  
+  //7
+  print("player05 values: ${player05.values}");
+  
+  //8
+  List<Map> playerList = [player01, player02, player03, player04, player05];
+  print("playerList: $playerList");
+  
+  //9
+  print("player02 name: ${playerList[1].values.first}");
+  
+  //10
+  for(int i = 0; i < playerList.length; i++)
+  {
+    print("${i+1}: Name: ${playerList[i].values.first} Class: ${playerList[i].values.elementAt(2)}");
+  }
+  
+  //11
+  player01.clear();
+  print("player01: $player01");
 }
