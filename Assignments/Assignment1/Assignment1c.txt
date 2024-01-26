@@ -1,4 +1,4 @@
-var player01 = {
+Map player01 = {
   'name': 'Leeroy Jenkins',
   'sex': 'M',
   'class': 'Knight',
@@ -12,7 +12,7 @@ Map player02 = {
   'hp': 9000
 };
   
-Map <String, dynamic> player03 = {
+Map <dynamic, dynamic> player03 = {
   'name': 'Samantha Evelyn Cook',
   'sex': 'F',
   'class': 'Gunter',
@@ -58,7 +58,17 @@ void main() {
   moreStuff['money'] = 10000;
   moreStuff['xp'] = 15000;
   moreStuff['level'] = 100;
-  //player01.addAll({moreStuff});
+  player01.addAll(moreStuff);
+  player02.addAll(moreStuff);
+  player03.addAll(moreStuff);
+  player04.addAll(moreStuff);
+  player05.addAll(moreStuff);
+  print("After addition:");
+  print(player01);
+  print(player02);
+  print(player03);
+  print(player04);
+  print(player05);
   
   //6
   print("player05 keys: ${player05.keys}");
