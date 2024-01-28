@@ -1,0 +1,79 @@
+void helloFunction (String? a, int b) {
+    print ("$a, $b");
+}
+
+//1
+void addThree({int a = 0, int b = 0, int c = 0})
+{
+  print("Sum: ${a + b + c}");
+}
+
+//2
+String joinStrings({String? first, String? second, String third = "Say", String fourth = "Something"})
+{
+  if(first == null)
+  {
+    if(second == null)
+    {
+      return "$third $fourth";
+    }
+    else
+    {
+      return "$second $third $fourth";
+    }
+  }
+  else if(second == null)
+  {
+    return "$first $third $fourth";
+  }
+  else
+  {
+    return "$first $second $third $fourth";
+  }
+}
+
+//3
+Map hiLow(double a, double b, double c)
+{
+  double sum = a + b + c;
+  return
+  {
+    'sum': sum,
+    'high': sum.round(),
+    'low': sum.floor()
+  };
+}
+
+//4
+Map makeCharacter({String? name, String? playerClass, int mp = 250, int hp = 100})
+{
+  return
+  {
+    'name': name,
+    'class': playerClass,
+    'mp': mp,
+    'hp': hp,
+    'xp': 3000,
+    'level': 10
+  };
+}
+
+void main() {
+  helloFunction("hi", 10);
+  helloFunction(null,10);
+  
+  //1
+  addThree(a: 5, b: 10, c:15);
+  
+  //2
+  print(joinStrings());
+  print(joinStrings(first: "hi", second: "bye"));
+  print(joinStrings(second: "bye"));
+  print(joinStrings(first: "hi"));
+  
+  //3
+  print(hiLow(10.01, 7.26, 12.25));
+  
+  //4
+  print(makeCharacter(name: "Snout", playerClass: "Wolf"));
+}
