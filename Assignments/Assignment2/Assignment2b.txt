@@ -52,10 +52,10 @@ class Player
 //3
 class Treasure
 {
-  String name = "gold";
-  int value = 1001;
-  String rarity = "Legendary";
-  String type = "Gem";
+  String name = "";
+  int value = 0;
+  String rarity = "";
+  String type = "";
   
   //constructor
   Treasure(this.name, this.value, this.rarity, this.type);
@@ -79,5 +79,14 @@ void main() {
     mario.levelUp();
   }
   
-  treasures.add(Treasure);
+  treasures.add(Treasure("Gold", 1001, "Legendary", "Metal"));
+  treasures.add(Treasure("Silver", 726, "Epic", "Metal"));
+  treasures.add(Treasure("Ring", 1217, "Legendary", "Jewelry"));
+  treasures.add(Treasure("Plank", 150, "Common", "Wood"));
+  treasures.add(Treasure("Health Potion", 250, "Rare", "Medical"));
+  print("Treasures:");
+  for(int i = 0; i < treasures.length; i++)
+  {
+    treasures[i].status();
+  }
 }

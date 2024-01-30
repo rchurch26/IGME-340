@@ -1,0 +1,104 @@
+/// our list of monsters
+List<dynamic> monsters = [];
+
+///
+/// Our Base Monster class
+///
+class Monster {
+  String name;
+  int hp;
+  int speed;
+  int score;
+  //1
+  String type;
+
+  /// constructor
+  Monster({this.name = "", this.hp = 0, this.speed = 0, this.score = 0, this.type = ""});
+
+  /// class method
+  void status() {
+    print("name: $name, hp: $hp, speed: $speed, score: $score, type: $type");
+  }
+}
+
+//Goomba Class
+class Goomba extends Monster {
+  String color;
+  int dmg;
+
+  Goomba(
+      {super.name,
+      super.hp,
+      super.speed,
+      super.score,
+      super.type = "Goomba",
+      this.color = "brown",
+      this.dmg = 20});
+  
+    @override
+  void status() {
+    print(
+        "name: $name, hp: $hp, speed: $speed, score: $score, type: $type, color: $color, dmg: $dmg");
+  }
+}
+
+//2
+//Boo Class
+class Boo extends Monster
+{
+  int mp;
+  
+  Boo(
+      {super.name,
+      super.hp,
+      super.speed,
+      super.score,
+      super.type = "Boo",
+      this.mp = 200});
+  
+  //3
+  void castSpell(int cost)
+  {
+    mp -= cost;
+    print("MP after spell: $mp");
+  }
+  
+  //4
+  @override
+  void status() {
+    print(
+        "name: $name, hp: $hp, speed: $speed, score: $score, type: $type, mp: $mp");
+  }
+}
+
+//5
+void makeSomeMonsters()
+{
+  monsters.add(Boo(name: "Ghast", hp: 10, mp: 100));
+  monsters.add(Boo(name: "Boo Man", hp: 100, type: "Boo", mp: 1000));
+  monsters.add(Goomba(name: "John", hp: 70, score: 115));
+}
+
+//6
+void showMonsters(String monsterType)
+{
+  for(int i = 0; i < monsters.length; i++)
+  {
+    if(monsters[i].type == monsterType)
+    {
+      monsters[i].status();
+    }
+  }
+}
+
+void main() {
+  Goomba myGoomba = Goomba(name: "Pinky", hp: 50, speed: 5, score: 100);
+  myGoomba.status();
+  
+  //5
+  makeSomeMonsters();
+  
+  //6
+  showMonsters("Boo");
+  showMonsters("Goomba");
+}
