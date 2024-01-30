@@ -1,0 +1,83 @@
+/// our list of monsters
+List<dynamic> monsters = [];
+
+//List of Treasure
+List<dynamic> treasures = [];
+
+///
+/// Our Base Monster class
+///
+class Monster {
+  String name;
+  int hp;
+  int speed;
+  int score;
+
+  /// constructor
+  Monster({this.name = "", this.hp = 0, this.speed = 0, this.score = 0});
+
+  /// class method
+  void status() {
+    print("name: $name, hp: $hp, speed: $speed, score: $score");
+  }
+}
+
+//1
+class Player
+{
+  String name;
+  int lives;
+  int score;
+  int xp;
+  int speed;
+  
+  //constructor
+  Player({this.name = "", this.lives = 0, this.score = 0, this.xp = 0, this.speed = 0});
+  
+  //Status Method
+  void status() {
+    print("Name: $name, Lives: $lives, Score: $score, XP: $xp, Speed: $speed");
+  }
+  
+  //LevelUp Method
+  void levelUp()
+  {
+    xp += 100;
+    speed += 10;
+    score += 500;
+    status();
+  }
+}
+
+//3
+class Treasure
+{
+  String name = "gold";
+  int value = 1001;
+  String rarity = "Legendary";
+  String type = "Gem";
+  
+  //constructor
+  Treasure(this.name, this.value, this.rarity, this.type);
+  
+  //Status Method
+  void status()
+  {
+    print("Name: $name, Value: $value, Rarity: $rarity, Type: $type");
+  }
+}
+
+void main() {
+  Monster myGoomba = Monster(hp: 50, name: 'John', score: 200, speed: 20);
+  myGoomba.status();
+  
+  //2
+  Player mario = Player(name: "Mario", lives: 3, speed: 10);
+  mario.status();
+  for(int i = 0; i < 10; i++)
+  {
+    mario.levelUp();
+  }
+  
+  treasures.add(Treasure);
+}
