@@ -70,11 +70,11 @@ class  DemoAppState extends State<DemoApp> {
                 ),
               ),
             ),
-            // Image.network(
-            //   remoteImg, 
-            //   width: 200, 
-            //   height: 200,
-            // ),
+            Image.network(
+              remoteImg, 
+              width: 200, 
+              height: 200,
+            ),
             Container(
               width: 400,
               height: 200,
