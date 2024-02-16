@@ -49,18 +49,36 @@ class _DesignAppState extends State<DesignApp> {
                 builder: (context)
                 {
                   return AlertDialog(
-                    alignment: Alignment.center,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                    ),
                     title: Text("About"),
                     content: Container(
-                      height: 200,
+                      height: 125,
+                      alignment: Alignment.centerLeft,
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text("Created by Rahmel Church Jr.",),
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text(
+                              "Created by Rahmel Church Jr.",
+                              textAlign: TextAlign.left,
+                            ),
                           ),
-                          Text("Based on the work done in 235's Design to Spec Homework."),
-                          Text("February 14th, 2024")
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Based on the work done in 235's Design to Spec Homework.",
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "February 16th, 2024",
+                              textAlign: TextAlign.left,
+                            ),
+                          )
                         ],
                       ),
                     ),
