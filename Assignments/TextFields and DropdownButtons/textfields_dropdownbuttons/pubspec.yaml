@@ -10,6 +10,7 @@ dependencies:
   email_validator: ^2.1.17
   flutter:
     sdk: flutter
+  telephone_check: ^0.0.4
   validated: ^2.0.0
 
 dev_dependencies:

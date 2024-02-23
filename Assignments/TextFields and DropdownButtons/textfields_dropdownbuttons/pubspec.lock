@@ -152,6 +152,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  telephone_check:
+    dependency: "direct main"
+    description:
+      name: telephone_check
+      sha256: e0d3193f75d4cf047a0a79bdfaf6257ee540fce6c303549c4ea123e464bf7d7d
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   term_glyph:
     dependency: transitive
     description:
@@ -194,3 +202,4 @@ packages:
     version: "0.3.0"
 sdks:
   dart: ">=3.2.4 <4.0.0"
+  flutter: ">=1.17.0"

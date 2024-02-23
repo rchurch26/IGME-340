@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:validated/validated.dart' as validate;
 
 void main() {
   runApp(const MainApp());
@@ -168,7 +167,7 @@ class _LabAppState extends State<LabApp> {
                           suffixIcon: IconButton(
                             icon: Icon(Icons.clear),
                             onPressed: () {
-                              nameController.clear();
+                              emailController.clear();
                             },
                           ),
                         ),
@@ -191,7 +190,7 @@ class _LabAppState extends State<LabApp> {
                           suffixIcon: IconButton(
                             icon: Icon(Icons.clear),
                             onPressed: () {
-                              nameController.clear();
+                              dobController.clear();
                             },
                           ),
                         ),
@@ -199,6 +198,10 @@ class _LabAppState extends State<LabApp> {
                           if(value == null || value.isEmpty)
                           {
                             return "Please enter your date of birth";
+                          }
+                          else if(value.length < 6 || value.length != 8)
+                          {
+                            return "Please enter valid date";
                           }
                           return null;
                         },
@@ -214,7 +217,7 @@ class _LabAppState extends State<LabApp> {
                           suffixIcon: IconButton(
                             icon: Icon(Icons.clear),
                             onPressed: () {
-                              nameController.clear();
+                              phoneController.clear();
                             },
                           ),
                         ),
@@ -222,7 +225,7 @@ class _LabAppState extends State<LabApp> {
                           if(value == null || value.isEmpty)
                           {
                             return "Please enter your number";
-                          }else if(value.length < 10 || value.length > 10)
+                          }else if(value.length < 10 || value.length > 12)
                           {
                             return "Enter valid number";
                           }
@@ -252,7 +255,7 @@ class _LabAppState extends State<LabApp> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
+                  ElevatedButton.icon(
                     style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll<Color>(Colors.red),
                     ),
@@ -266,15 +269,18 @@ class _LabAppState extends State<LabApp> {
                         userData = "Your data will show here!";
                       });
                     },
-                    child: const Text(
+                    icon: Icon(
+                      Icons.clear,
+                      color: Colors.white,
+                    ),
+                    label: const Text(
                       "Reset Form",
                       style: TextStyle(
                         color: Colors.white,
-                        
                       ),
                     ),
                   ),
-                  ElevatedButton(
+                  ElevatedButton.icon(
                     style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll<Color>(Colors.green),
                     ),
@@ -283,7 +289,11 @@ class _LabAppState extends State<LabApp> {
                         userData = "Name: ${nameController.text}\nEmail: ${emailController.text}\nDate of Birth: ${dobController.text}\nPhone Number: ${phoneController.text}\nPreferred Contact: $selectedOption";
                       });
                     },
-                    child: const Text(
+                    icon: Icon(
+                      Icons.check,
+                      color: Colors.white,
+                    ),
+                    label: const Text(
                       "Submit Form",
                       style: TextStyle(
                         color: Colors.white,
