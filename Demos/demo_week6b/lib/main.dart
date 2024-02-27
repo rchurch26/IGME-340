@@ -36,45 +36,69 @@ class DemoApp extends StatefulWidget {
 }
 
 class __DemoAppState extends State<DemoApp> {
+  String addedVal = "0";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            width: double.infinity,
-            height: 300,
-            child: ListView.builder(
-              itemCount: inventory.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListTile(
-                    trailing: Text("\$ ${inventory[index]["price"]}"),
-                    minVerticalPadding: 5,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                    tileColor: Colors.blueGrey[100],
-                    title: Text(inventory[index]["name"]),
-                    subtitle: Text("Price: ${inventory[index]["price"]}"),
-                    onTap: () {
-                      print("You selected ${inventory[index]["name"]}");
-                    }
-                  ),
-                );
-              }),
-            ),
+      appBar: AppBar(
+        title: const Text("Inventory"),
+      ),
+      body: Container(
+        width: double.infinity,
+        height: 300,
+        child: Column(
+          children: [
+            // Container(
+            //   width: double.infinity,
+            //   height: 300,
+            //   child: ListView.builder(
+            //     itemCount: inventory.length,
+            //     itemBuilder: (BuildContext context, int index) {
+            //       return Padding(
+            //         padding: const EdgeInsets.all(8.0),
+            //         child: ListTile(
+            //           trailing: Text("\$ ${inventory[index]["price"]}"),
+            //           minVerticalPadding: 5,
+            //           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            //           tileColor: Colors.blueGrey[100],
+            //           title: Text(inventory[index]["name"]),
+            //           subtitle: Text("Price: ${inventory[index]["price"]}"),
+            //           onTap: () {
+            //             print("You selected ${inventory[index]["name"]}");
+            //           }
+            //         ),
+            //       );
+            //     }),
+            //   ),
             ElevatedButton(
               onPressed: () async {
                 print("Button Pressed!");
-                String retData = await sumNum(20, 30);
-                print("retData: $retData");
+                posts = await goGetPosts();
+                // String retData = await sumNum(10, 01);
+                // print("retData: $retData");
                 setState(() {
-                  addedVal = retData;
+                  //addedVal = retData;
                 });
               }, 
               child: const Text("Do da ting"),
             ),
-        ],
+            Center(
+              child: Text(addedVal),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: posts.length,
+                itemBuilder: ((context, index) {
+                  return ListTile(
+                    title: Text(posts[index]["title"]),
+                    trailing: Text(posts[index]["id"].toString()),
+                  );
+                }),
+              ),
+            ),
+          ],
+        ),
       ),
       );
   }
@@ -82,7 +106,12 @@ class __DemoAppState extends State<DemoApp> {
 
 Future<String> sumNum (int a, int b)
 {
-  
+  return Future.delayed(Duration(seconds: 2), () 
+  {
+    int retVal = a + b;
+    print("Going to return: $retVal");
+    return retVal.toString();
+  });
 }
 
 Future<List> goGetPosts() async 
