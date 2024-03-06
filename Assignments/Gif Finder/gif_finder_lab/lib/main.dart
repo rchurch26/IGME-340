@@ -6,7 +6,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 
 Map<String, dynamic> posts = {};
-Map<String, dynamic> randPost = {};
 
 void main() {
   runApp(const MainApp());
@@ -19,7 +18,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        fontFamily: 'courier',
+        fontFamily: 'dogico',
         scaffoldBackgroundColor: Colors.black,
       ),
       home: GifFinder(),
@@ -107,6 +106,8 @@ class _GifFinderState extends State<GifFinder> {
 
   @override
   Widget build(BuildContext context) {
+    String url = "https://giphy.com";
+
     return GestureDetector(
       onTap: () {
         FocusManager.instance.primaryFocus?.unfocus();
@@ -192,7 +193,7 @@ class _GifFinderState extends State<GifFinder> {
                   ),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -229,15 +230,18 @@ class _GifFinderState extends State<GifFinder> {
                       ),
                       onPressed: () async {
                         FocusManager.instance.primaryFocus?.unfocus();
-                        launchUrl(Uri.parse('https://giphy.com/search/${searchController.text}'));
+                        if(!await launchUrl(Uri.parse("$url/search/${searchController.text}")))
+                        {
+                          throw "Couldn't launch $url";
+                        }
                       }, 
                       child: Text("Use Giphy!"),
                     ),
                   ],
                 ),
-                Text("Result Count: $selectedResult"),
+                Text("Result Count: $selectedResult", style: TextStyle(color: Colors.white),),
                 Container(
-                  height: 300,
+                  height: 400,
                   child: GridView.builder(
                     physics: BouncingScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

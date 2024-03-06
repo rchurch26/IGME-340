@@ -20,3 +20,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+  - family: dogico
+    fonts:
+      - asset: assets\fonts\VT323-Regular.ttf
