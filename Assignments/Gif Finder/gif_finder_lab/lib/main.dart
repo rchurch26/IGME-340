@@ -259,7 +259,7 @@ class _GifFinderState extends State<GifFinder> {
                         child: InkWell(
                           onTap: () {
                             print("Tapped!");
-                            AlertDialog(
+                            AlertDialog alert = AlertDialog(
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0))),
                               title: Text(posts["data"][index]["title"]),
                               content: Container(
@@ -272,6 +272,10 @@ class _GifFinderState extends State<GifFinder> {
 
                               ],
                             );
+                            showDialog(context: context, builder: (BuildContext context) 
+                            {
+                              return alert;
+                            });
                           },
                           child: Image.network(
                             posts["data"][index]["images"]["fixed_height"]["url"],
