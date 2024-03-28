@@ -31,6 +31,7 @@ class _WebAppState extends State<WebApp> {
   String setup = "";
   String joke = "Laugh More!";
   final _myFormId = GlobalKey<FormState>();
+  bool? nsfwChecked = false;
 
   var categoryOptions = [
     const DropdownMenuItem(
@@ -86,46 +87,103 @@ class _WebAppState extends State<WebApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                width: double.infinity,
-                child: Form(
-                  key: _myFormId,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: DropdownButtonFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Category",
-                            border: OutlineInputBorder(),
+              SingleChildScrollView(
+                child: Container(
+                  width: double.infinity,
+                  child: Form(
+                    key: _myFormId,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: DropdownButtonFormField(
+                            decoration: const InputDecoration(
+                              labelText: "Category",
+                              border: OutlineInputBorder(),
+                            ),
+                            items: [DropdownMenuItem(child: Text("Sample"))], 
+                            onChanged: (value) {},
                           ),
-                          items: [DropdownMenuItem(child: Text("Sample"))], 
-                          onChanged: (value) {},
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: DropdownButtonFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Depth",
-                            border: OutlineInputBorder(),
+                        Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: DropdownButtonFormField(
+                            decoration: const InputDecoration(
+                              labelText: "Depth",
+                              border: OutlineInputBorder(),
+                            ),
+                            items: [DropdownMenuItem(child: Text("Sample"))], 
+                            onChanged: (value) {},
                           ),
-                          items: [DropdownMenuItem(child: Text("Sample"))], 
-                          onChanged: (value) {},
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Contains",
-                            border: OutlineInputBorder(),
+                        Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: TextFormField(
+                            decoration: const InputDecoration(
+                              labelText: "Contains",
+                              border: OutlineInputBorder(),
+                            ),
+                            onChanged: (value) {},
                           ),
-                          onChanged: (value) {},
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Column(
+                            children: [
+                              CheckboxListTile(
+                                title: const Text("NSFW"),
+                                controlAffinity: ListTileControlAffinity.leading,
+                                value: nsfwChecked,
+                                onChanged: (value) {
+                                  setState(() {
+                                    nsfwChecked = value;
+                                  });
+                                },
+                                checkColor: Colors.red,
+                                activeColor: Colors.black,
+                              ),
+                              CheckboxListTile(
+                                title: const Text("Religious"),
+                                controlAffinity: ListTileControlAffinity.leading,
+                                value: nsfwChecked,
+                                onChanged: (value) {
+                                  setState(() {
+                                    nsfwChecked = value;
+                                  });
+                                },
+                                checkColor: Colors.red,
+                                activeColor: Colors.black,
+                              ),
+                              CheckboxListTile(
+                                title: const Text("Political"),
+                                controlAffinity: ListTileControlAffinity.leading,
+                                value: nsfwChecked,
+                                onChanged: (value) {
+                                  setState(() {
+                                    nsfwChecked = value;
+                                  });
+                                },
+                                checkColor: Colors.red,
+                                activeColor: Colors.black,
+                              ),
+                              CheckboxListTile(
+                                title: const Text("Explicit"),
+                                controlAffinity: ListTileControlAffinity.leading,
+                                value: nsfwChecked,
+                                onChanged: (value) {
+                                  setState(() {
+                                    nsfwChecked = value;
+                                  });
+                                },
+                                checkColor: Colors.red,
+                                activeColor: Colors.black,
+                              ),
+                            ],
+                          )
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
