@@ -281,7 +281,7 @@ class _WebAppState extends State<WebApp> {
                     onPressed: () async {
                       await prefs.setString("contain", containController.text);
                       apiJokeUrl = "https://v2.jokeapi.dev/joke/$selectedCategory?type=$selectedDepth";
-                      if(containController.text != null || containController.text.isNotEmpty)
+                      if(containController.text != "" || containController.text.isNotEmpty)
                       {
                         apiJokeUrl = "https://v2.jokeapi.dev/joke/$selectedCategory?type=$selectedDepth&contains=${containController.text}";
                       }
@@ -327,15 +327,15 @@ class _WebAppState extends State<WebApp> {
                       }
                       jokes = await goGetJokes();
                       setState(() {
-                        if(jokes["error"] == "true")
+                        if(jokes["error"] == true)
                         {
                           joke = jokes["message"];
                           print(jokes["message"]);
                         }
-                        else if(selectedDepth == "Single" && jokes["error"] == "false")
+                        else if(selectedDepth == "Single" && jokes["error"] == false)
                         {
                           joke = jokes["joke"];
-                        }else if(selectedDepth == "TwoPart" && jokes["error"] == "false")
+                        }else if(selectedDepth == "TwoPart" && jokes["error"] == false)
                         {
                           setup = jokes["setup"];
                           joke = jokes["delivery"];
