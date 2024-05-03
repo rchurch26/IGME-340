@@ -1,4 +1,7 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
+import 'package:flame/experimental.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/events.dart';
@@ -7,13 +10,13 @@ import 'package:flame/game.dart';
 import 'package:multi_man/clone.dart';
 import 'player.dart';
 import 'dart:async';
-import 'multiman.dart';
+import 'car.dart';
 
 void main() {
   runApp(GameWidget(game: MultiMan(),),);
 }
 
-class MultiMan extends FlameGame with TapCallbacks {
+class MultiMan extends FlameGame with TapCallbacks, HasCollisionDetection {
   late Player user;
   late Vector2 tapLoc;
 
@@ -35,10 +38,12 @@ class MultiMan extends FlameGame with TapCallbacks {
     add(SpawnComponent(
       factory: (index)
       {
-        return Car();
+        return Car()..add(
+          ColorEffect(Colors.orange, EffectController(duration: 0),),
+        );
       }, 
-      period: 1,
-      area: 
+      period: 2,
+      area: Rectangle.fromLTWH(0, 0, size.x, -800),
     ));
   }
 
