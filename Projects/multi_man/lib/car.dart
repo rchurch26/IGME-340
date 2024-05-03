@@ -10,11 +10,11 @@ class Car extends SpriteComponent with HasGameRef<MultiMan>, CollisionCallbacks
   @override
   Future<void> onLoad() async{
     sprite = Sprite(game.images.fromCache("car.png"));
+    add(RectangleHitbox(anchor: Anchor.center, size: Vector2.all(10)));
     angle = pi;
     anchor = Anchor.center;
     height = 100;
     width = 100;
-    add(RectangleHitbox());
   }
 
   @override

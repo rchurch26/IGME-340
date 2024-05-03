@@ -8,12 +8,33 @@ import 'package:flame/events.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:multi_man/clone.dart';
+import 'package:multi_man/mainMenu.dart';
+import 'pauseMenu.dart';
+import 'gameOver.dart';
 import 'player.dart';
 import 'dart:async';
 import 'car.dart';
 
 void main() {
-  runApp(GameWidget(game: MultiMan(),),);
+  runApp(
+    GameWidget(
+      game: MultiMan(),
+      overlayBuilderMap: {
+        "MainMenu": (_, game)
+        {
+          return MainMenuOverlay(game: game as MultiMan);
+        },
+        "PauseMenu": (_, game)
+        {
+          return PauseMenuOverlay(game: game as MultiMan);
+        },
+        "GameOver": (_, game)
+        {
+          return GameOverOverlay(game: game as MultiMan, score: 0,);
+        }
+      },
+    ),
+  );
 }
 
 class MultiMan extends FlameGame with TapCallbacks, HasCollisionDetection {
@@ -22,7 +43,7 @@ class MultiMan extends FlameGame with TapCallbacks, HasCollisionDetection {
 
   @override
   Future<void> onLoad() async{
-    await images.loadAll(["car.png"]);
+    await images.loadAll(["car.png", "Pause.png"]);
     final parallax = await loadParallaxComponent(
       [
         ParallaxImageData("road.png"),
@@ -33,6 +54,11 @@ class MultiMan extends FlameGame with TapCallbacks, HasCollisionDetection {
       velocityMultiplierDelta: Vector2(0, 5),
     );
     add(parallax);
+    initializeGame();
+  }
+
+  void initializeGame()
+  {
     user = Player();
     add(user);
     add(SpawnComponent(
@@ -52,5 +78,12 @@ class MultiMan extends FlameGame with TapCallbacks, HasCollisionDetection {
     super.onTapUp(event);
     tapLoc = event.localPosition;
     user.moveToLoc(tapLoc);
+  }
+
+  @override
+  void onLongTapDown(TapDownEvent event) {
+    super.onLongTapDown(event);
+    paused = true;
+    overlays.add("PauseMenu");
   }
 }
