@@ -1,0 +1,5 @@
+﻿For my project 3, I created a Flutter Flame game, Multi-Motor, requiring players to avoid cars coming at them by tapping an area on the screen. There was supposed to be a cloning mechanic where players can clone themselves in an area and become the clone when they’re in a pinch. Unfortunately, I couldn’t implement that. The splash screen and hitboxes have a few issues as well. While this isn’t my best work, it was definitely made with hard work and took many hours. The final product is also very different from the proposal in almost every way. Regardless, Multi-Motor is functional with no crashing. It also has a splash screen and a custom icon. There are decent designs and custom sprites.
+
+
+Resources
+* Road by Alucard - https://opengameart.org/content/2d-top-down-highway-background
