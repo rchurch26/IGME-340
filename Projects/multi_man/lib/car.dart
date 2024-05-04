@@ -7,16 +7,18 @@ import 'main.dart';
 
 class Car extends SpriteComponent with HasGameRef<MultiMan>, CollisionCallbacks
 {
+  //Load Car Image, angle it downward, give it a hit box
   @override
   Future<void> onLoad() async{
     sprite = Sprite(game.images.fromCache("car.png"));
-    add(RectangleHitbox(anchor: Anchor.center, size: Vector2.all(10)));
     angle = pi;
     anchor = Anchor.center;
     height = 100;
     width = 100;
+    add(CircleHitbox());
   }
 
+//Check collision with player
   @override
   void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollisionStart(intersectionPoints, other);
@@ -26,6 +28,7 @@ class Car extends SpriteComponent with HasGameRef<MultiMan>, CollisionCallbacks
     }
   }
 
+//move cars downward and remove them when off screen
   @override
   void update(double dt) {
     super.update(dt);
@@ -34,5 +37,11 @@ class Car extends SpriteComponent with HasGameRef<MultiMan>, CollisionCallbacks
     {
       removeFromParent();
     }
+  }
+  
+  //Remove car when it hits player
+  void doHit()
+  {
+    removeFromParent();
   }
 }
